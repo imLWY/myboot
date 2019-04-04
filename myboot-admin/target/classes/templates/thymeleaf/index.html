@@ -1,0 +1,587 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ecss电子商务商城系统</title>
+    <meta name="keywords" content="ecss电子商务商城系统">
+    <meta name="description" content="ecss电子商务商城系统">
+    <link rel="stylesheet" th:href="@{/static/js/lib/layui2.3/css/layui.css}">
+    <link rel="stylesheet" th:href="@{/static/fonts/fonts.css}">
+    <link rel="stylesheet" th:href="@{/static/css/common.css}">
+    <link rel="stylesheet" th:href="@{/static/css/style.css}">
+</head>
+<script src="/static/js/vue/vue.min.js"></script>
+<script src="/static/js/lib/jquery.min.js"></script>
+<body>
+    <div class="wrap bg-top">
+        <div class="content-box bg-bottom">
+            <div class="header">
+                <div class="inner-1200">
+                    <img src="static/img/logo.png" />
+                    <div class="header-right">
+                        <a href="" title="退出"><i class="icon-out"></i></a>
+                        <img src="static/img/test.png" title="头像">
+                        <span>小王老师</span>
+                    </div>
+                </div>
+            </div>
+            <div class="search-keyword">
+                <div class="inner-1200">
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <input type="text" name="title" class="input-forum layui-input" placeholder="请输入关键字"
+                                autocomplete="off">
+                            <button class="layui-btn"><i class="layui-icon layui-icon-search"></i></button>
+                            <div class="hot-search">
+                                <span>热门搜索：</span>
+                                <a href="">6</a>
+                                <a href="">呵呵</a>
+                                <a href="">12</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+<!--        <div id="app">
+			  <ol>
+			    <li v-for="cate in cates">
+			      {{ cate.cateName }}
+			    </li>
+			  </ol>
+			</div>
+             -->
+            <div class="banner">
+                <div class="inner-1200">
+                    <div class="fs">
+                        <span><i class="icon-fs"></i> 商品分类567567567</span>
+                        <ul class="fs-cate">
+                        <div id="app">
+                             <li v-for="cate in cates">
+                             <span onclick='getChildGcategory()'>   <a href="">{{ cate.cateName }}</a></span>
+                                <ul class="fs-cate-item">
+                                    <li><a href="" class="item-title">电视 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">电视 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">电视 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">电视 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">电视 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">电视 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                </ul>
+                            </li>
+                         </div>   
+                            
+                           
+                           <!--  <li>
+                                <a href="">手机</a>/<a href="">运营商</a>/<a href="">数码</a>
+                                <ul class="fs-cate-item">
+                                    <li><a href="" class="item-title">手机 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">手机 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">手机 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">手机 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">手机 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">手机 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="">电脑</a>/<a href="">办公</a>
+                                <ul class="fs-cate-item">
+                                    <li><a href="" class="item-title">电脑 &gt;</a>|<a href="">电脑</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">电脑 &gt;</a>|<a href="">65英寸</a>|<a href="">电脑</a>|<a
+                                            href="">电脑</a>|<a href="">65英寸</a>|<a href="">电脑</a>|<a href="">电脑</a>|<a
+                                            href="">65英寸</a>|<a href="">电脑</a>|<a href="">电脑</a></li>
+                                    <li><a href="" class="item-title">电脑 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">电脑 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">电脑 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">电脑 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="">家具</a>/<a href="">家居</a>/<a href="">家装</a>/<a href="">厨具</a>
+                                <ul class="fs-cate-item">
+                                    <li><a href="" class="item-title">家具 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">家具 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">家具 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">家具 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">家具 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">家具 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="">美妆</a>/<a href="">个护清洁</a>/<a href="">宠物</a>
+                                <ul class="fs-cate-item">
+                                    <li><a href="" class="item-title">美妆 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">美妆 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">美妆 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">美妆 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">美妆 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">美妆 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="">艺术</a>/<a href="">礼品鲜花</a>/<a href="">农资绿植</a>
+                                <ul class="fs-cate-item">
+                                    <li><a href="" class="item-title">艺术 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">艺术 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                    <li><a href="" class="item-title">艺术 &gt;</a>|<a href="">65英寸</a>|<a href="">65英寸</a>|<a
+                                            href="">65英寸</a></li>
+                                </ul>
+                            </li> -->
+                        </ul>
+                    </div>
+                    <div class="layui-carousel" id="test1">
+                        <div carousel-item>
+                            <div class="clearfix">
+                                <div class="floatLeft">
+                                    <span class="banner-img"><img th:src="@{/static/img/banner-b1.jpg}"></span>
+                                </div>
+                                <div class="floatRight">
+                                    <span class="banner-img"><img th:src="@{/static/img/banner-s1.jpg}"></span>
+                                    <span class="banner-img"><img th:src="@{/static/img/banner-s2.jpg}"></span>
+                                    <span class="banner-img"><img th:src="@{/static/img/banner-s3.jpg}"></span>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="floatLeft">
+                                    <span class="banner-img"><img th:src="@{/static/img/banner-b2.jpg}"></span>
+                                </div>
+                                <div class="floatRight">
+                                    <span class="banner-img"><img th:src="@{/static/img/banner-s4.jpg}"></span>
+                                    <span class="banner-img"><img th:src="@{/static/img/banner-s5.jpg}"></span>
+                                    <span class="banner-img"><img th:src="@{/static/img/banner-s6.jpg}"></span>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="floatLeft">
+                                    <span class="banner-img"><img th:src="@{/static/img/banner-b3.jpg}"></span>
+                                </div>
+                                <div class="floatRight">
+                                    <span class="banner-img"><img th:src="@{/static/img/banner-s7.jpg}"></span>
+                                    <span class="banner-img"><img th:src="@{/static/img/banner-s8.jpg}"></span>
+                                    <span class="banner-img"><img th:src="@{/static/img/banner-s9.jpg}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content inner-1200 clearfix">
+                <div class="floatLeft w-880">
+                    <div class="index-section">
+                        <div class="title">
+                            <h3>推介商品 <em>&bull; Pick of the week</em></h3>
+                        </div>
+                        <div class="category">
+                            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                                <ul class="layui-tab-title">
+                                    <li class="layui-this">热卖商品</li>
+                                    <li>新品上市</li>
+                                    <li>推介商品</li>
+                                    <li>猜你喜欢</li>
+                                </ul>
+                                <div class="layui-tab-content">
+                                    <div class="layui-tab-item layui-show">
+                                        <ul class="commodity-list">
+                                            <li>
+                                                <a href="">
+                                                    <span class="commodity-img"><img src="static/img/img.jpg" /></span>
+                                                    <span class="commodity-name">金菊秋冬两翻领气质保暖100%羊毛衫女</span>
+                                                    <span class="commodity-price">￥100.00</span>
+                                                </a>
+                                                <div>
+                                                    <span><i class="icon-comment"></i> 0</span>
+                                                    <span><i class="icon-concern2"></i> 0</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span class="commodity-img"><img src="static/img/img.jpg" /></span>
+                                                    <span class="commodity-name">金菊秋冬两翻领气质保暖100%羊毛衫女100%羊毛衫女</span>
+                                                    <span class="commodity-price">￥100.00</span>
+                                                </a>
+                                                <div>
+                                                    <span><i class="icon-comment"></i> 0</span>
+                                                    <span><i class="icon-concern2"></i> 0</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span class="commodity-img"><img src="static/img/img.jpg" /></span>
+                                                    <span class="commodity-name">金菊秋冬两翻领气质保暖100%羊毛衫女</span>
+                                                    <span class="commodity-price">￥100.00</span>
+                                                </a>
+                                                <div>
+                                                    <span><i class="icon-comment"></i> 0</span>
+                                                    <span><i class="icon-concern2"></i> 0</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span class="commodity-img"><img src="static/img/img.jpg" /></span>
+                                                    <span class="commodity-name">金菊秋冬两翻领气质保暖100%羊毛衫女</span>
+                                                    <span class="commodity-price">￥100.00</span>
+                                                </a>
+                                                <div>
+                                                    <span><i class="icon-comment"></i> 0</span>
+                                                    <span><i class="icon-concern2"></i> 0</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span class="commodity-img"><img src="static/img/img.jpg" /></span>
+                                                    <span class="commodity-name">金菊秋冬两翻领气质保暖100%羊毛衫女</span>
+                                                    <span class="commodity-price">￥100.00</span>
+                                                </a>
+                                                <div>
+                                                    <span><i class="icon-comment"></i> 0</span>
+                                                    <span><i class="icon-concern2"></i> 0</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span class="commodity-img"><img src="static/img/img.jpg" /></span>
+                                                    <span class="commodity-name">金菊秋冬两翻领气质保暖100%羊毛衫女</span>
+                                                    <span class="commodity-price">￥100.00</span>
+                                                </a>
+                                                <div>
+                                                    <span><i class="icon-comment"></i> 0</span>
+                                                    <span><i class="icon-concern2"></i> 0</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span class="commodity-img"><img src="static/img/img.jpg" /></span>
+                                                    <span class="commodity-name">金菊秋冬两翻领气质保暖100%羊毛衫女</span>
+                                                    <span class="commodity-price">￥100.00</span>
+                                                </a>
+                                                <div>
+                                                    <span><i class="icon-comment"></i> 0</span>
+                                                    <span><i class="icon-concern2"></i> 0</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span class="commodity-img"><img src="static/img/img.jpg" /></span>
+                                                    <span class="commodity-name">金菊秋冬两翻领气质保暖100%羊毛衫女</span>
+                                                    <span class="commodity-price">￥100.00</span>
+                                                </a>
+                                                <div>
+                                                    <span><i class="icon-comment"></i> 0</span>
+                                                    <span><i class="icon-concern2"></i> 0</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span class="commodity-img"><img src="static/img/img.jpg" /></span>
+                                                    <span class="commodity-name">金菊秋冬两翻领气质保暖100%羊毛衫女</span>
+                                                    <span class="commodity-price">￥100.00</span>
+                                                </a>
+                                                <div>
+                                                    <span><i class="icon-comment"></i> 0</span>
+                                                    <span><i class="icon-concern2"></i> 0</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span class="commodity-img"><img src="static/img/img.jpg" /></span>
+                                                    <span class="commodity-name">金菊秋冬两翻领气质保暖100%羊毛衫女</span>
+                                                    <span class="commodity-price">￥100.00</span>
+                                                </a>
+                                                <div>
+                                                    <span><i class="icon-comment"></i> 0</span>
+                                                    <span><i class="icon-concern2"></i> 0</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="layui-tab-item">内容2</div>
+                                    <div class="layui-tab-item">内容3</div>
+                                    <div class="layui-tab-item">内容4</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="index-section">
+                        <div class="title">
+                            <h3>视频商品 <em>&bull; Video commodity</em></h3>
+                        </div>
+                        <div class="category clearfix">
+                            <div class="floatLeft vShop-1">
+                                <a href="">
+                                    <img src="static/img/img.jpg">
+                                    <span class="shop-name ellipsis">爱美丽羽绒服微店爱美丽羽绒服微店爱美丽羽绒服微店</span>
+                                    <p>
+                                        <span class="commodity-name ellipsis">爱美丽羽绒服微店爱美丽羽绒服微店爱美丽羽绒服微店</span>
+                                        <span><i class="icon-eye"></i> 200次</span>
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="floatLeft vShop-2">
+                                <a href="">
+                                    <img src="static/img/img.jpg">
+                                    <span class="shop-name ellipsis">爱美丽羽绒服微店爱美丽羽绒服微店爱美丽羽绒服微店</span>
+                                    <p>
+                                        <span class="commodity-name ellipsis">爱美丽羽绒服微店爱美丽羽绒服微店爱美丽羽绒服微店</span>
+                                        <span><i class="icon-eye"></i> 33000次</span>
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="floatRight vShop-3">
+                                <a href="">
+                                    <img src="static/img/img.jpg">
+                                    <span class="shop-name ellipsis">爱美丽羽绒服微店爱美丽羽绒服微店爱美丽羽绒服微店</span>
+                                    <p>
+                                        <span class="commodity-name ellipsis">爱美丽羽绒服微店爱美丽羽绒服微店爱美丽羽绒服微店</span>
+                                        <span><i class="icon-eye"></i> 00次</span>
+                                    </p>
+                                </a>
+                                <a href="">
+                                    <img src="static/img/img.jpg">
+                                    <span class="shop-name ellipsis">爱美丽羽绒服微店爱美丽羽绒服微店爱美丽羽绒服微店</span>
+                                    <p>
+                                        <span class="commodity-name ellipsis">爱美丽羽绒服微店爱美丽羽绒服微店爱美丽羽绒服微店</span>
+                                        <span><i class="icon-eye"></i> 00次</span>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="floatRight w-262">
+                    <div class="marketing">
+                        <a href=""><i class="icon-yx"></i> 营销中心</a>
+                    </div>
+                    <div class="integral">
+                        <a href="">
+                            <i class="icon-jf"></i>
+                            <strong>积分兑换</strong><br />
+                            <span>当前积分：<em>100分</em></span>
+                        </a>
+                    </div>
+                    <ul class="income-list">
+                        <li class="list-title">店铺收入排行</li>
+                        <li>
+                            <em class="color-ff4949">1</em>
+                            <p>
+                                <span class="list-img"><img src="static/img/photo.png"></span>
+                                <span class="list-name">
+                                    <strong>小王同学</strong><br />
+                                    电商一班
+                                </span>
+                            </p>
+                            <span class="list-price color-ff4949">￥100.00</span>
+                        </li>
+                        <li>
+                            <em class="color-2495f4">2</em>
+                            <p>
+                                <span class="list-img"><img src="static/img/photo.png"></span>
+                                <span class="list-name">
+                                    <strong>小王同学</strong><br />
+                                    电商一班
+                                </span>
+                            </p>
+                            <span class="list-price color-ff4949">￥100.00</span>
+                        </li>
+                        <li>
+                            <em class="color-ffa842">3</em>
+                            <p>
+                                <span class="list-img"><img src="static/img/photo.png"></span>
+                                <span class="list-name">
+                                    <strong>小王同学</strong><br />
+                                    电商一班
+                                </span>
+                            </p>
+                            <span class="list-price color-ff4949">￥100.00</span>
+                        </li>
+                        <li>
+                            <em>4</em>
+                            <p>
+                                <span class="list-img"><img src="static/img/photo.png"></span>
+                                <span class="list-name">
+                                    <strong>小王同学</strong><br />
+                                    电商一班
+                                </span>
+                            </p>
+                            <span class="list-price color-ff4949">￥100.00</span>
+                        </li>
+                        <li>
+                            <em>5</em>
+                            <p>
+                                <span class="list-img"><img src="static/img/photo.png"></span>
+                                <span class="list-name">
+                                    <strong>小王同学</strong><br />
+                                    电商一班
+                                </span>
+                            </p>
+                            <span class="list-price color-ff4949">￥100.00</span>
+                        </li>
+                        <li>
+                            <em>6</em>
+                            <p>
+                                <span class="list-img"><img src="static/img/photo.png"></span>
+                                <span class="list-name">
+                                    <strong>小王同学</strong><br />
+                                    电商一班
+                                </span>
+                            </p>
+                            <span class="list-price color-ff4949">￥100.00</span>
+                        </li>
+                        <li>
+                            <em>7</em>
+                            <p>
+                                <span class="list-img"><img src="static/img/photo.png"></span>
+                                <span class="list-name">
+                                    <strong>小王同学</strong><br />
+                                    电商一班
+                                </span>
+                            </p>
+                            <span class="list-price color-ff4949">￥100.00</span>
+                        </li>
+                        <li>
+                            <em>8</em>
+                            <p>
+                                <span class="list-img"><img src="static/img/photo.png"></span>
+                                <span class="list-name">
+                                    <strong>小王同学</strong><br />
+                                    电商一班
+                                </span>
+                            </p>
+                            <span class="list-price color-ff4949">￥100.00</span>
+                        </li>
+                    </ul>
+                    <ul class="generalize-list">
+                        <li class="list-title">店铺推广排行</li>
+                        <li>
+                            <span class="list-img"><img src="static/img/photo.png"></span>
+                            <span class="list-name">
+                                <strong>小王同学</strong><br />
+                                电商一班
+                            </span>
+                        </li>
+                        <li>
+                            <span class="list-img"><img src="static/img/photo.png"></span>
+                            <span class="list-name">
+                                <strong>小王同学</strong><br />
+                                电商一班
+                            </span>
+                        </li>
+                        <li>
+                            <span class="list-img"><img src="static/img/photo.png"></span>
+                            <span class="list-name">
+                                <strong>小王同学</strong><br />
+                                电商一班电商一班电商一班
+                            </span>
+                        </li>
+                        <li>
+                            <span class="list-img"><img src="static/img/photo.png"></span>
+                            <span class="list-name">
+                                <strong>小王同学</strong><br />
+                                电商一班电商一班电商一班电商一班电商一班电商一班
+                            </span>
+                        </li>
+                        <li>
+                            <span class="list-img"><img src="static/img/photo.png"></span>
+                            <span class="list-name">
+                                <strong>小王同学</strong><br />
+                                电商一班电商一班电商一班电商一班电商一班
+                            </span>
+                        </li>
+                        <li>
+                            <span class="list-img"><img src="static/img/photo.png"></span>
+                            <span class="list-name">
+                                <strong>小王同学</strong><br />
+                                电商一班电商一班电商一班电商一班电商一班电商一班
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 页脚 -->
+    <div class="footer footer-bg">
+        <p>
+            版权所有：北京华唐中科科技集团股份有限公司&emsp;&emsp;公司地址：北京市海淀区上地九街9号数码科技广场南区410
+            <br>
+            京ICP备14006137号&emsp;&emsp;电话：010-82895528 传真：010-82895527
+        </p>
+    </div>
+    <script th:src="@{/static/js/lib/jquery.min.js}"></script>
+    <script th:src="@{/static/js/lib/layui2.3/layui.all.js}"></script>
+    <script th:src="@{/static/js/all.js}"></script>
+    <script>
+    	$.ajax({
+    		type: "POST",
+    		url:"http://localhost:9798/admin/gcategory/list",
+    		contentType : 'application/json',
+    		dataType : 'json', 
+    		data:'{"page":1}',
+    		success:function(result){
+    			var data = result.data;
+    			console.log(data);
+		   		console.log(data.dataList[1].cateName);
+		   		new Vue({
+		      	  el: '#app',
+		      	  data: {
+		      	    cates: data.dataList
+		      	  }
+		      	})
+    		}
+	    });
+    	
+    	
+    	function getChildGcategory(parentId){
+    		alert(parentId);
+    	};
+    	
+    	
+        layui.use('carousel', function () {
+            var carousel = layui.carousel;
+            //建造实例
+            carousel.render({
+                elem: '#test1',
+                width: '100%',//设置容器宽度
+                arrow: 'none' //始终显示箭头
+                //,anim: 'updown' //切换动画方式
+            });
+        });
+        $(function(){
+        	alert(123);
+        });
+    </script>
+</body>
+
+</html>
